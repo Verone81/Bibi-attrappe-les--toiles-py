@@ -26,16 +26,16 @@ for i in range(10):
 
 vitesse_bibi = 0.5
 
-running = True
+marche= True
 
-while running:
+while marche:
     # Gérer les événements
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            marche = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                running = False
+                marche = False
             elif event.key == pygame.K_LEFT:
                 left = True
                 right = False
@@ -47,9 +47,9 @@ while running:
     fenetre.fill(couleur_bleu_nuit)
 
     # Déplacer Bibi
-    if left and 200 + x > 0:
+    if left and largeur_fenetre/2 + x > 0:
         x -= vitesse_bibi
-    elif right and 200 + x < largeur_fenetre - 128:
+    elif right and largeur_fenetre/2 + x < largeur_fenetre - 128:
         x += vitesse_bibi
 
     # Blit les étoiles
@@ -57,7 +57,7 @@ while running:
         fenetre.blit(etoile, position)
 
     # Blit Bibi
-    fenetre.blit(bibi, (200 + x, hauteur_fenetre - 128, 128, 128))
+    fenetre.blit(bibi, (largeur_fenetre/2 + x, hauteur_fenetre - 128, 128, 128))
 
     pygame.display.update()
 
